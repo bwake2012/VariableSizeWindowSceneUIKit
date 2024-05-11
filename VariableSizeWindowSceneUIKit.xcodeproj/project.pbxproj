@@ -22,6 +22,7 @@
 		C4012D442BE88B9900EFF005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4012D492BE88B9900EFF005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4012D4F2BE88DFD00EFF005 /* WindowScene+resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WindowScene+resize.swift"; sourceTree = "<group>"; };
+		C4E83A842BEFC5B600F547DE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +39,7 @@
 		C4012D2F2BE88B9800EFF005 = {
 			isa = PBXGroup;
 			children = (
+				C4E83A842BEFC5B600F547DE /* README.md */,
 				C4012D3A2BE88B9800EFF005 /* VariableSizeWindowSceneUIKit */,
 				C4012D392BE88B9800EFF005 /* Products */,
 			);
