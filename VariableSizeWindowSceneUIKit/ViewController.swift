@@ -14,52 +14,55 @@ import SwiftUI
 
 class ViewController: UIViewController {
 
+    struct SizeButton: Identifiable {
+        var id: String { title }
+
+        let title: String
+        let width: CGFloat
+        let height: CGFloat
+        let imageName: String
+
+        var size: CGSize {
+            CGSize(width: width, height: height)
+        }
+    }
+
+    static var buttonList: [SizeButton] = {
+        [
+            SizeButton(title: "Portrait", width: 480, height: 640, imageName: "rectangle.portrait.fill"),
+            SizeButton(title: "Landscape", width: 640, height: 480, imageName: "rectangle.fill"),
+            SizeButton(title: "Large Square", width: 640, height: 640, imageName: "square.fill"),
+            SizeButton(title: "Small Square", width: 480, height: 480, imageName: "square.fill"),
+            SizeButton(title: "Smaller Square", width: 360, height: 360, imageName: "square.fill"),
+            SizeButton(title: "Very Small Square", width: 240, height: 240, imageName: "square.fill"),
+            SizeButton(title: "Tiny Square", width: 180, height: 180, imageName: "square.fill")
+        ]
+    }()
+
     private lazy var buttonStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [portraitButton, landscapeButton, largeSquareButton, smallSquareButton, verySmallSquareButton, tinySquareButton])
+        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 4.0
         stackView.distribution = .fillEqually
+        for item in Self.buttonList {
+            stackView.addArrangedSubview(buildResizeButton(item))
+        }
         return stackView
     }()
 
-    private lazy var portraitButton: UIButton = {
-        buildResizeButton("Portrait", width: 480, height: 640)
-    }()
+    private func buildResizeButton(_ sizeButton: SizeButton) -> UIButton {
 
-    private lazy var landscapeButton: UIButton = {
-        buildResizeButton("Landscape", width: 640, height: 480)
-    }()
-
-    private lazy var largeSquareButton: UIButton = {
-        buildResizeButton("Large Square", width: 640, height: 640)
-    }()
-
-    private lazy var smallSquareButton: UIButton = {
-        buildResizeButton("Small Square", width: 480, height: 480)
-    }()
-
-    private lazy var verySmallSquareButton: UIButton = {
-        buildResizeButton("Very Small Square", width: 240, height: 240)
-    }()
-
-    private lazy var tinySquareButton: UIButton = {
-        buildResizeButton("Tiny Square", width: 180, height: 180)
-    }()
-
-    private func buildResizeButton(_ caption: String, width: CGFloat, height: CGFloat) -> UIButton {
-
-        let title = String(format: "%@ %3.0f,%3.0f", caption, width, height)
+        let title = String(format: "%@ %3.0f,%3.0f", sizeButton.title, sizeButton.width, sizeButton.height)
         let action = UIAction(title: title) { (action) in
-            self.view.window?.windowScene?.resize(to: CGSize(width: width, height: height))
+            self.view.window?.windowScene?.resize(to: sizeButton.size)
         }
 
         let button = UIButton(primaryAction: action)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
         return button
-
     }
 
     private lazy var screenSizeLabel: UILabel = {
@@ -79,20 +82,35 @@ class ViewController: UIViewController {
         topConstraint, leadingConstraint, bottomConstraint, trailingConstraint
     ]
 
-    @IBAction
-    private func showOrnaments(display string: String) {
-        #if os(visionOS)
+    lazy var sizeButtonOrnament = buildSizeButtonOrnament()
+
+    private func buildSizeDisplayOrnament(size: CGSize) -> UIOrnament {
         let ornament = UIHostingOrnament(sceneAnchor: .bottom, contentAlignment: .top) {
-            VStack {
-                Text(verbatim: string)
+            HStack(spacing: 4) {
+                Text(String(format: "%3.0f", size.width))
+                Text(String(format: "%3.0f", size.height))
             }
             .padding()
             .glassBackgroundEffect(displayMode: .implicit)
         }
-        ornaments = [ornament]
-        #endif
+        return ornament
     }
 
+    private func buildSizeButtonOrnament() -> UIOrnament {
+        let ornament = UIHostingOrnament(sceneAnchor: .leading, contentAlignment: .trailing) {
+            VStack(spacing: 4) {
+                ForEach(Self.buttonList) { button in
+                    Button(button.title, systemImage: button.imageName) {
+                        self.view.window?.windowScene?.resize(to: button.size)
+                    }
+                }
+            }
+            .padding()
+            .glassBackgroundEffect(displayMode: .implicit)
+        }
+
+        return ornament
+    }
 
     override func loadView() {
         super.loadView()
@@ -105,10 +123,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let size = view.bounds.size
+        ornaments = [sizeButtonOrnament, buildSizeDisplayOrnament(size: size)]
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
-        showOrnaments(display: String(format: "%3.0f,%3.0f", size.width, size.height))
+        ornaments = [sizeButtonOrnament, buildSizeDisplayOrnament(size: size)]
     }
 }
 
