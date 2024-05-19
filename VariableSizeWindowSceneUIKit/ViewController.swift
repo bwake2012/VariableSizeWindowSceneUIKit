@@ -145,3 +145,11 @@ class ViewController: UIViewController {
     }
 }
 
+
+#if os(visionOS)
+extension ViewController {
+    override var preferredContainerBackgroundStyle: UIContainerBackgroundStyle {
+        .glass
+    }
+}
+#endif
