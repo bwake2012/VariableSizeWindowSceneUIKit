@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C41B95F72CF16F1900CFA376 /* SizeButtonTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B95F52CF16BD500CFA376 /* SizeButtonTemplate.swift */; };
+		C41B95F82CF1787D00CFA376 /* SizeButtonOrnamentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B95F32CF16B1700CFA376 /* SizeButtonOrnamentContent.swift */; };
+		C43DF3F22CF50841000DD14D /* SizeDisplayOrnamentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43DF3F12CF50841000DD14D /* SizeDisplayOrnamentContent.swift */; };
 		C4B242072BFAF08500539C87 /* appstore1024.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B241EC2BFAF08500539C87 /* appstore1024.png */; };
 		C4B242082BFAF08500539C87 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = C4B241ED2BFAF08500539C87 /* Contents.json */; };
 		C4B242092BFAF08500539C87 /* ipad76.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B241EE2BFAF08500539C87 /* ipad76.png */; };
@@ -41,8 +44,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C41B95F32CF16B1700CFA376 /* SizeButtonOrnamentContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeButtonOrnamentContent.swift; sourceTree = "<group>"; };
+		C41B95F52CF16BD500CFA376 /* SizeButtonTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeButtonTemplate.swift; sourceTree = "<group>"; };
+		C43DF3F12CF50841000DD14D /* SizeDisplayOrnamentContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeDisplayOrnamentContent.swift; sourceTree = "<group>"; };
+		C43DF3F32CF7C949000DD14D /* VariableSizeWindowSceneUIKitOriginal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VariableSizeWindowSceneUIKitOriginal.png; sourceTree = "<group>"; };
+		C43DF3F42CF7C949000DD14D /* VariableSizeWindowSceneUIKitTiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VariableSizeWindowSceneUIKitTiny.png; sourceTree = "<group>"; };
 		C46B04202CC2DE610037F1A7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C46B04212CC2DF470037F1A7 /* VariableSizeWindowSceneUIKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VariableSizeWindowSceneUIKit.png; sourceTree = "<group>"; };
 		C4B241EC2BFAF08500539C87 /* appstore1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore1024.png; sourceTree = "<group>"; };
 		C4B241ED2BFAF08500539C87 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		C4B241EE2BFAF08500539C87 /* ipad76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad76.png; sourceTree = "<group>"; };
@@ -126,7 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				C46B04202CC2DE610037F1A7 /* README.md */,
-				C46B04212CC2DF470037F1A7 /* VariableSizeWindowSceneUIKit.png */,
+				C43DF3F32CF7C949000DD14D /* VariableSizeWindowSceneUIKitOriginal.png */,
+				C43DF3F42CF7C949000DD14D /* VariableSizeWindowSceneUIKitTiny.png */,
 				C4B376FF2BFAA7B200A1AD01 /* VariableSizeWindowSceneUIKit */,
 				C4B376FE2BFAA7B200A1AD01 /* Products */,
 			);
@@ -146,6 +154,9 @@
 				C4B377142BFAA88200A1AD01 /* AppDelegate.swift */,
 				C4B377162BFAA88200A1AD01 /* SceneDelegate.swift */,
 				C4B377172BFAA88200A1AD01 /* ViewController.swift */,
+				C41B95F32CF16B1700CFA376 /* SizeButtonOrnamentContent.swift */,
+				C43DF3F12CF50841000DD14D /* SizeDisplayOrnamentContent.swift */,
+				C41B95F52CF16BD500CFA376 /* SizeButtonTemplate.swift */,
 				C4B377182BFAA88200A1AD01 /* WindowScene+resize.swift */,
 				C4B377092BFAA7B200A1AD01 /* Assets.xcassets */,
 				C4B242062BFAF08500539C87 /* AppIcon.appiconset */,
@@ -250,6 +261,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4B3771D2BFAA88200A1AD01 /* AppDelegate.swift in Sources */,
+				C41B95F72CF16F1900CFA376 /* SizeButtonTemplate.swift in Sources */,
+				C41B95F82CF1787D00CFA376 /* SizeButtonOrnamentContent.swift in Sources */,
+				C43DF3F22CF50841000DD14D /* SizeDisplayOrnamentContent.swift in Sources */,
 				C4B377212BFAA88200A1AD01 /* WindowScene+resize.swift in Sources */,
 				C4B377202BFAA88200A1AD01 /* ViewController.swift in Sources */,
 				C4B3771F2BFAA88200A1AD01 /* SceneDelegate.swift in Sources */,
